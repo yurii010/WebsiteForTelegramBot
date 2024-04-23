@@ -8,21 +8,6 @@ import Form from './components/Form/Form';
 
 function App() {
   const { tg } = useTelegram();
-  const onSendData = useCallback(() => {
-    const data ={
-      country,
-      city,
-      subject
-    }
-    tg.sendData(JSON.stringify(data));
-  }, [country, city, subject])
-
-  useEffect(() => {
-    tg.onEvent('mainButtonClicked', onSendData)
-    return () => {
-      tg.offEvent('mainButtonClicked', onSendData)
-    }
-  }, [onSendData])
 
   useEffect(() => {
     tg.ready();
