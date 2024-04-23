@@ -48,8 +48,7 @@ const ProductList = () => {
                 <ProductItem
                     product={item}
                     onAdd={onAdd}
-                    className={item}
-
+                    className={'item'}
                 />
             })}
         </div>
