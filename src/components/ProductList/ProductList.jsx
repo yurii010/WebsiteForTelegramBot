@@ -32,6 +32,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
+        // need change localhost and port /web-data
         fetch('http://localhost:8000', {
             method: 'POST',
             headers: {
@@ -39,7 +40,7 @@ const ProductList = () => {
             },
             body: JSON.stringify(data)
         })
-    }, [])
+    }, [addedItems, queryId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
