@@ -6,7 +6,7 @@ const Form = () => {
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [subject, setSubject] = useState('male');
-    const {tg} = useTelegram();
+    const { tg } = useTelegram();
 
     useEffect(() => {
         tg.MainButton.setParams({
@@ -14,34 +14,34 @@ const Form = () => {
         })
     }, [])
 
-    useEffect(()=>{
-        if(!country || !city){
+    useEffect(() => {
+        if (!country || !city) {
             tg.MainButton.hide();
-        }else{
+        } else {
             tg.MainButton.show();
         }
     }, [country, city])
 
-    const onChangeCountry = () => {
+    const onChangeCountry = (e) => {
         setCountry(e.target.value);
     }
 
-    const onChangeCity = () => {
+    const onChangeCity = (e) => {
         setCity(e.target.value);
     }
 
-    const onChangeSubject = () => {
+    const onChangeSubject = (e) => {
         setSubject(e.target.value);
     }
 
     return (
         <div className='form'>
             <h3>Your credentials</h3>
-            <input className='input' type="text" placeholder='Your country' value={country} onChange={onChangeCountry} />
-            <input className='input' type="text" placeholder='Your city' value={city} onChange={onChangeCity} />
+            <input className={'input'} type="text" placeholder={'Your country'} value={country} onChange={onChangeCountry} />
+            <input className={'input'} type="text" placeholder={'Your city'} value={city} onChange={onChangeCity} />
             <select className='select' value={subject} onChange={onChangeSubject}>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value={"male"}>Male</option>
+                <option value={"female"}>Female</option>
             </select>
         </div>
     );
