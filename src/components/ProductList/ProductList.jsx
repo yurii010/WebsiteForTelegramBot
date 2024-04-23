@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css';
@@ -17,7 +18,7 @@ const products = [
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
-        return acc += item.price;
+        return acc += item.price
     }, 0)
 }
 
@@ -32,7 +33,9 @@ const ProductList = () => {
         } else {
             newItem = [...addedItems, product];
         }
+
         setAddedItems(newItem);
+
         if (newItem.length === 0) {
             tg.MainButton.hide();
         } else {
