@@ -35,7 +35,7 @@ const ProductList = () => {
         fetch('http://localhost:8000', {
             method: 'POST',
             headers: {
-                'Context-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
