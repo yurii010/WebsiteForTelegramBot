@@ -33,7 +33,7 @@ const ProductList = () => {
             queryId,
         }
         // need change localhost and port /web-data
-        fetch('http://localhost:8000', {
+        fetch('https://be95-217-196-161-98.ngrok-free.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
