@@ -1,23 +1,28 @@
 .product {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--th-theme-button-color);
+    border: 1px solid black;
     padding: 15px;
     width: 170px;
 }
 
-.img{
-     width: 100%;
-     background: lightgray;
-     height: 100px;
-     margin: 0 auto;
-     background: var(--th-theme-button-color);
+.img {
+    width: 100%;
+    background-color: black;
+    height: 100px;
+    margin: 0 auto;
 }
 
-.description{
-    font-size: 0.8em;
+.title {
+    font-size: 25px;
 }
 
-.add-btn{
+.description {
+    padding: 5px 0px;
+    font-size: 15px;
+}
+
+.add-btn {
+    margin-top: 10px;
     width: 100%;
 }
