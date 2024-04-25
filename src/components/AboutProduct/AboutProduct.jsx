@@ -1,6 +1,7 @@
 import './AboutProduct.css';
 import '../ProductItem/ProductItem.css';
 import Button from '../Button/Button';
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTelegram } from '../../hooks/useTelegram';
 
