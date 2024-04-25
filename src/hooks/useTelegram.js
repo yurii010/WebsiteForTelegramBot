@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useCallback } from 'react';
 
 const TelegramContext = createContext(); 
 
@@ -46,12 +46,29 @@ export const TelegramProvider = ({ children }) => {
         }
     };
 
+    const onSendData = useCallback(() => {
+        const data = {
+            products: addedItems,
+            totalPrice: getTotalPrice(addedItems),
+            queryId,
+        }
+        // need change localhost and port /web-data
+        fetch('https://1cce-217-196-161-98.ngrok-free.app/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [addedItems, queryId])
+
     const contextValue = {
         tg,
         products,
         addedItems,
         setAddedItems,
         getTotalPrice,
+        onSendData,
         onAdd,
     };
 
