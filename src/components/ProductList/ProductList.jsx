@@ -38,7 +38,7 @@ const ProductList = () => {
             {products.map(item => (
                 <ProductItem
                     product={item}
-                    onAdd={onAddHandler}
+                    onAdd={onAdd}
                     className='item'
                 />
             ))}

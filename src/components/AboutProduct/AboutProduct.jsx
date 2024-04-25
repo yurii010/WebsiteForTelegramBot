@@ -10,7 +10,6 @@ const AboutProduct = ({ onAdd }) => {
     const params = useParams();
     const productStr = JSON.stringify(products);
     const productArray = JSON.parse(productStr);
-
     const onAddHandler = () => {
         onAdd(productArray[params.id-1]);
     }
