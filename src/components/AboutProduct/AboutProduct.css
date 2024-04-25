@@ -1,6 +1,6 @@
 .back-btn {
     text-decoration: none;
-    color: black;
+    color: var(--tg-theme-button-text-color);
     text-align: center;
 }
 
