@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css';
@@ -16,15 +16,11 @@ const products = [
     { id: '10', title: 'tangerin', price: 1000, description: 'norm' },
 ]
 
-const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-        return acc += item.price
-    }, 0)
-}
+
+
 
 const ProductList = () => {
-    const [addedItems, setAddedItems] = useState([]);
-    const { tg, queryId } = useTelegram();
+    const { tg, queryId, getTotalPrice, addedItems, onAdd } = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
@@ -49,26 +45,6 @@ const ProductList = () => {
         }
     }, [onSendData])
 
-    const onAdd = (product) => {
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
-        let newItem = [];
-        if (alreadyAdded) {
-            newItem = addedItems.filter(item => item.id !== product.id);
-        } else {
-            newItem = [...addedItems, product];
-        };
-
-        setAddedItems(newItem);
-
-        if (newItem.length === 0) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: `Buy ${getTotalPrice(newItem)}`
-            });
-        };
-    }
     return (
         <div className='list'>
             {products.map(item => (

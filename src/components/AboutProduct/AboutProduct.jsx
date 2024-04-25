@@ -6,13 +6,14 @@ import { useTelegram } from '../../hooks/useTelegram';
 
 const AboutProduct = ({ onAdd }) => {
     const { products } = useTelegram();
-    const onAddHandler = () => {
-        onAdd(products);
-    }
 
     const params = useParams();
     const productStr = JSON.stringify(products);
     const productArray = JSON.parse(productStr);
+
+    const onAddHandler = () => {
+        onAdd(productArray);
+    }
 
     return (
         <div className={`product`}>

@@ -1,6 +1,10 @@
+import { useState } from 'react';
+
 const tg = window.Telegram.WebApp;
 
 export function useTelegram() {
+
+    const [addedItems, setAddedItems] = useState([]);
 
     const onClose = () => {
         tg.close();
@@ -14,6 +18,33 @@ export function useTelegram() {
         }
     }
 
+    const getTotalPrice = (items = []) => {
+        return items.reduce((acc, item) => {
+            return acc += item.price
+        }, 0)
+    }
+
+    const onAdd = (product) => {
+        const alreadyAdded = addedItems.find(item => item.id === product.id);
+        let newItem = [];
+        if (alreadyAdded) {
+            newItem = addedItems.filter(item => item.id !== product.id);
+        } else {
+            newItem = [...addedItems, product];
+        };
+
+        setAddedItems(newItem);
+
+        if (newItem.length === 0) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `Buy ${getTotalPrice(newItem)}`
+            });
+        };
+    }
+
     const products = [
         { id: '1', title: 'banana', price: 100, description: 'good' },
         { id: '2', title: 'apple', price: 200, description: 'well' },
@@ -25,7 +56,7 @@ export function useTelegram() {
         { id: '8', title: 'peach', price: 800, description: 'nice' },
         { id: '9', title: 'cherry', price: 900, description: 'bad' },
         { id: '10', title: 'tangerin', price: 1000, description: 'norm' },
-    ] 
+    ]
 
     return {
         tg,
@@ -34,6 +65,10 @@ export function useTelegram() {
         onToggleButton,
         queryId: tg.initDataUnsafe?.query_id,
         products,
+        onAdd,
+        addedItems,
+        setAddedItems,
+        getTotalPrice,
     }
 
 }
