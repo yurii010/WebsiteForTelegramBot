@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 
 const ProductItem = ({ product, className, onAdd }) => {
+
     const onAddHandler = () => {
         onAdd(product);
     }

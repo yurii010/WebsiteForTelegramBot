@@ -6,10 +6,6 @@ import './ProductList.css';
 const ProductList = () => {
     const { tg, queryId, getTotalPrice, addedItems, onAdd, products } = useTelegram();
 
-    const onAddHandler = () => {
-        onAdd(products);
-    }
-
     const onSendData = useCallback(() => {
         const data = {
             products: addedItems,
@@ -38,7 +34,7 @@ const ProductList = () => {
             {products.map(item => (
                 <ProductItem
                     product={item}
-                    onAdd={onAddHandler}
+                    onAdd={onAdd}
                     className='item'
                 />
             ))}
