@@ -5,9 +5,17 @@ import { Link, useParams } from 'react-router-dom';
 import { useTelegram } from '../../hooks/useTelegram';
 
 const AboutProduct = () => {
-    const { products, onAdd } = useTelegram();
+    const { tg, products, onSendData, onAdd } = useTelegram();
 
     const params = useParams();
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
     const onAddHandler = () => {
         onAdd(products[params.id - 1]);
     }

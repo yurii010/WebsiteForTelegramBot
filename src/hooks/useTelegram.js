@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const tg = window.Telegram.WebApp;
 
@@ -22,6 +22,8 @@ export function useTelegram() {
         { id: '9', title: 'cherry', price: 900, description: 'bad' },
         { id: '10', title: 'tangerin', price: 1000, description: 'norm' },
     ]
+
+    const queryId = tg.initDataUnsafe?.query_id;
 
     // Methods
 
@@ -64,12 +66,27 @@ export function useTelegram() {
         };
     }
 
+    const onSendData = useCallback(() => {
+        const data = {
+            products: addedItems,
+            totalPrice: getTotalPrice(addedItems),
+            queryId,
+        }
+        // need change localhost and port /web-data
+        fetch('https://1cce-217-196-161-98.ngrok-free.app/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [addedItems, queryId])
+
     // Return
 
     return {
         tg,
         user: tg.initDataUnsafe?.user,
-        queryId: tg.initDataUnsafe?.query_id,
         products,
         addedItems,
         onClose,
@@ -77,5 +94,6 @@ export function useTelegram() {
         onAdd,
         setAddedItems,
         getTotalPrice,
+        onSendData,
     }
 }

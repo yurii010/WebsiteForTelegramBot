@@ -4,23 +4,7 @@ import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css';
 
 const ProductList = () => {
-    const { tg, queryId, getTotalPrice, addedItems, onAdd, products } = useTelegram();
-
-    const onSendData = useCallback(() => {
-        const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
-            queryId,
-        }
-        // need change localhost and port /web-data
-        fetch('https://1cce-217-196-161-98.ngrok-free.app/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [addedItems, queryId])
+    const { tg, products, onSendData, onAdd } = useTelegram();
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
