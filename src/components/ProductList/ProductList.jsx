@@ -28,11 +28,12 @@ const ProductList = () => {
             tg.offEvent('mainButtonClicked', onSendData)
         }
     }, [onSendData])
+
     return (
         <div className='list'>
-            {products.map(item => (
+            {products.map(product => (
                 <ProductItem
-                    product={item}
+                    product={product}
                     onAdd={onAdd}
                     className='item'
                 />

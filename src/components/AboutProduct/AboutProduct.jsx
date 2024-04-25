@@ -19,6 +19,7 @@ const AboutProduct = () => {
             <div className='price' >
                 <span>Price: <b>{products[params.id - 1].price}</b></span>
             </div>
+
             <Button className={'add-btn'} onClick={onAddHandler}>
                 Add
             </Button>

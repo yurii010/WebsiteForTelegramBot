@@ -8,7 +8,7 @@ import Form from './components/Form/Form';
 import AboutProduct from './components/AboutProduct/AboutProduct';
 
 function App() {
-  const { tg, products, onAdd } = useTelegram();
+  const { tg } = useTelegram();
 
   useEffect(() => {
     tg.ready();
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path={'/'} element={<ProductList />} />
         <Route path={'form'} element={<Form />} />
-        <Route path={`about/:id`} element={<AboutProduct onAdd={onAdd} products={products} />} />
+        <Route path={`about/:id`} element={<AboutProduct />} />
       </Routes>
       <Header />
     </div>

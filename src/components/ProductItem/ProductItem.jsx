@@ -16,7 +16,7 @@ const ProductItem = ({ product, className, onAdd }) => {
             <div className='price' >
                 <span>Price: <b>{product.price}</b></span>
             </div>
-            <Link to={`/about/${product.id}`} className={`more-about-btn ${className} add-btn`}>
+            <Link to={`/about/${product.id}`} className={`${className} more-about-btn add-btn`}>
                 <Button className={'add-btn'} >
                     More about
                 </Button>
