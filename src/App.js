@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path={'/'} element={<ProductList />} />
         <Route path={'form'} element={<Form />} />
-        <Route path={`about/${products.id}`} element={<AboutProduct />} />
+        <Route path={`about/:id`} element={<AboutProduct products={products} />} />
       </Routes>
       <Header />
     </div>

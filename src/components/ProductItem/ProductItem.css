@@ -1,9 +1,10 @@
 .product {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
     padding: 15px;
     width: 170px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
 }
 
 .img {
@@ -30,4 +31,5 @@
 .more-about-btn {
     text-decoration: none;
     color: black;
+    text-align: center;
 }

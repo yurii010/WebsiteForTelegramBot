@@ -1,25 +1,35 @@
 import './AboutProduct.css';
+import '../ProductItem/ProductItem.css';
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useTelegram } from '../../hooks/useTelegram';
 
-const AboutProduct = ({ product, className, onAdd }) => {
+const AboutProduct = ({ onAdd }) => {
+    const { products } = useTelegram();
     const onAddHandler = () => {
-        onAdd(product);
+        onAdd(products);
     }
+
+    const params = useParams();
+    const productStr = JSON.stringify(products);
+    const productArray = JSON.parse(productStr);
+
     return (
-        <div className={`product ${className}`}>
+        <div className={`product`}>
             <div className='img' />
-            <div className='title' >{product.title}</div>
-            <div className='description' > {product.description}</div >
+            <div className='title' >{productArray[params.id - 1].title}</div>
+            <div className='description' >{productArray[params.id - 1].description}</div >
             <div className='price' >
-                <span>Price: <b>{product.price}</b></span>
+                <span>Price: <b>{productArray[params.id - 1].price}</b></span>
             </div>
             <Button className={'add-btn'} onClick={onAddHandler}>
                 Add
             </Button>
-            <Button className={'add-btn'}>
-                <Link to="/">Go back</Link>
-            </Button>
+            <Link className='back-btn' to="/">
+                <Button className={'add-btn'}>
+                    Go back
+                </Button>
+            </Link>
         </div >
     );
 };

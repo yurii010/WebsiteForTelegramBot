@@ -1,0 +1,15 @@
+.back-btn {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+body{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product{
+
+}
