@@ -12,7 +12,7 @@ const AboutProduct = ({ onAdd }) => {
     const productArray = JSON.parse(productStr);
 
     const onAddHandler = () => {
-        onAdd(productArray);
+        onAdd(productArray[params.id-1]);
     }
 
     return (

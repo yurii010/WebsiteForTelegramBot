@@ -16,9 +16,6 @@ const products = [
     { id: '10', title: 'tangerin', price: 1000, description: 'norm' },
 ]
 
-
-
-
 const ProductList = () => {
     const { tg, queryId, getTotalPrice, addedItems, onAdd } = useTelegram();
 
