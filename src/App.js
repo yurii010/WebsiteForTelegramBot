@@ -5,9 +5,10 @@ import Header from './components/Header/Header';
 import { Route, Routes } from 'react-router-dom';
 import ProductList from './components/ProductList/ProductList';
 import Form from './components/Form/Form';
+import AboutProduct from './components/AboutProduct/AboutProduct';
 
 function App() {
-  const { tg } = useTelegram();
+  const { tg, products } = useTelegram();
 
   useEffect(() => {
     tg.ready();
@@ -16,8 +17,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index element={<ProductList />} />
+        <Route path={'/'} element={<ProductList />} />
         <Route path={'form'} element={<Form />} />
+        <Route path={`about/${products.id}`} element={<AboutProduct />} />
       </Routes>
       <Header />
     </div>

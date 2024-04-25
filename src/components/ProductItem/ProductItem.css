@@ -26,3 +26,8 @@
     margin-top: 10px;
     width: 100%;
 }
+
+.more-about-btn {
+    text-decoration: none;
+    color: black;
+}
