@@ -6,6 +6,7 @@ export const TelegramProvider = ({ children }) => {
     const [addedItems, setAddedItems] = useState([]);
 
     const tg = window.Telegram.WebApp;
+    const queryId = tg.initDataUnsafe?.query_id;
 
     const products = [
         { id: '1', title: 'banana', price: 100, description: 'good' },
