@@ -1,14 +1,11 @@
-import { useState, useCallback } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-const tg = window.Telegram.WebApp;
+const TelegramContext = createContext(); 
 
-export function useTelegram() {
-
-    // States 
-
+export const TelegramProvider = ({ children }) => {
     const [addedItems, setAddedItems] = useState([]);
 
-    // Data
+    const tg = window.Telegram.WebApp;
 
     const products = [
         { id: '1', title: 'banana', price: 100, description: 'good' },
@@ -21,79 +18,50 @@ export function useTelegram() {
         { id: '8', title: 'peach', price: 800, description: 'nice' },
         { id: '9', title: 'cherry', price: 900, description: 'bad' },
         { id: '10', title: 'tangerin', price: 1000, description: 'norm' },
-    ]
-
-    const queryId = tg.initDataUnsafe?.query_id;
-
-    // Methods
-
-    const onClose = () => {
-        tg.close();
-    }
-
-    const onToggleButton = () => {
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-        }
-    }
+    ];
 
     const getTotalPrice = (items = []) => {
         return items.reduce((acc, item) => {
-            return acc += item.price
-        }, 0)
-    }
+            return (acc += item.price);
+        }, 0);
+    };
 
     const onAdd = (product) => {
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
-        let newItem = [];
+        const alreadyAdded = addedItems.find((item) => item.id === product.id);
+        let newItems = [];
         if (alreadyAdded) {
-            newItem = addedItems.filter(item => item.id !== product.id);
+            newItems = addedItems.filter((item) => item.id !== product.id);
         } else {
-            newItem = [...addedItems, product];
-        };
+            newItems = [...addedItems, product];
+        }
 
-        setAddedItems(newItem);
-
-        if (newItem.length === 0) {
+        setAddedItems(newItems);
+        if (newItems.length === 0) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Buy ${getTotalPrice(newItem)}`
+                text: `Buy ${getTotalPrice(newItems)}`,
             });
-        };
-    }
-
-    const onSendData = useCallback(() => {
-        const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
-            queryId,
         }
-        // need change localhost and port /web-data
-        fetch('https://1cce-217-196-161-98.ngrok-free.app/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [addedItems, queryId])
+    };
 
-    // Return
-
-    return {
+    const contextValue = {
         tg,
-        user: tg.initDataUnsafe?.user,
         products,
         addedItems,
-        onClose,
-        onToggleButton,
-        onAdd,
         setAddedItems,
         getTotalPrice,
-        onSendData,
-    }
-}
+        onAdd,
+    };
+
+    return (
+        <TelegramContext.Provider value={contextValue}>
+            {children}
+        </TelegramContext.Provider>
+    );
+};
+
+export const useTelegram = () => {
+    return useContext(TelegramContext);
+};
