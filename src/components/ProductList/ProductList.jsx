@@ -28,7 +28,6 @@ const ProductList = () => {
             tg.offEvent('mainButtonClicked', onSendData)
         }
     }, [onSendData])
-
     return (
         <div className='list'>
             {products.map(item => (

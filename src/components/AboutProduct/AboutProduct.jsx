@@ -8,20 +8,16 @@ const AboutProduct = () => {
     const { products, onAdd } = useTelegram();
 
     const params = useParams();
-    const productStr = JSON.stringify(products);
-    const productArray = JSON.parse(productStr);
-
     const onAddHandler = () => {
-        onAdd(productArray[params.id-1]);
+        onAdd(products[params.id - 1]);
     }
-
     return (
         <div className={`product`}>
             <div className='img' />
-            <div className='title' >{productArray[params.id - 1].title}</div>
-            <div className='description' >{productArray[params.id - 1].description}</div >
+            <div className='title' >{products[params.id - 1].title}</div>
+            <div className='description' >{products[params.id - 1].description}</div >
             <div className='price' >
-                <span>Price: <b>{productArray[params.id - 1].price}</b></span>
+                <span>Price: <b>{products[params.id - 1].price}</b></span>
             </div>
             <Button className={'add-btn'} onClick={onAddHandler}>
                 Add
