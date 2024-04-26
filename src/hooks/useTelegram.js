@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 
-const TelegramContext = createContext(); 
+const TelegramContext = createContext();
 
 export const TelegramProvider = ({ children }) => {
     const [addedItems, setAddedItems] = useState([]);
@@ -9,16 +9,16 @@ export const TelegramProvider = ({ children }) => {
     const queryId = tg.initDataUnsafe?.query_id;
 
     const products = [
-        { id: '1', title: 'banana', price: 100, description: 'good' },
-        { id: '2', title: 'apple', price: 200, description: 'well' },
-        { id: '3', title: 'tomato', price: 300, description: 'awesome' },
-        { id: '4', title: 'cabbage', price: 400, description: 'amazing' },
-        { id: '5', title: 'onion', price: 500, description: 'pretty' },
-        { id: '6', title: 'cucumber', price: 600, description: 'sweet' },
-        { id: '7', title: 'orange', price: 700, description: 'cool' },
-        { id: '8', title: 'peach', price: 800, description: 'nice' },
-        { id: '9', title: 'cherry', price: 900, description: 'bad' },
-        { id: '10', title: 'tangerin', price: 1000, description: 'norm' },
+        { id: '1', title: 'Banana', price: 100, description: 'Good', image: 'https://freepngimg.com/thumb/banana/13-banana-png-image-bananas-picture-download.png' },
+        { id: '2', title: 'Apple', price: 200, description: 'Well', image: 'https://freepngimg.com/thumb/apple/9-apple-png-image.png' },
+        { id: '3', title: 'Kiwi', price: 300, description: 'Awesome', image: 'https://freepngimg.com/thumb/kiwi/3-kiwi-png-image-fruit-kiwi-png-pictures-download.png' },
+        { id: '4', title: 'Raspberry', price: 400, description: 'Amazing', image: 'https://freepngimg.com/thumb/raspberry/3-rraspberry-png-image.png' },
+        { id: '5', title: 'Blackberry', price: 500, description: 'Pretty', image: 'https://freepngimg.com/thumb/blackberry/6-2-blackberry-fruit-free-png-image.png' },
+        { id: '6', title: 'Watermelon', price: 600, description: 'Sweet', image: 'https://freepngimg.com/thumb/watermelon/4-watermelon-png-image.png' },
+        { id: '7', title: 'Orange', price: 700, description: 'Cool', image: 'https://freepngimg.com/thumb/orange/12-orange-png-image-download.png' },
+        { id: '8', title: 'Peach', price: 800, description: 'Nice', image: 'https://freepngimg.com/thumb/peach/4-peach-png-image.png' },
+        { id: '9', title: 'Cherry', price: 900, description: 'Great', image: 'https://freepngimg.com/thumb/cherry/1-red-cherry-png-image-download.png' },
+        { id: '10', title: 'Tangerin', price: 1000, description: 'Good', image: 'https://freepngimg.com/thumb/orange/5-orange-png-image-download.png' },
     ];
 
     const getTotalPrice = (items = []) => {

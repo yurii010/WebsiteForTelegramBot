@@ -1,7 +1,8 @@
+import '../App.css';
+
 import { useEffect, useCallback } from 'react';
-import { useTelegram } from '../../hooks/useTelegram';
-import ProductItem from '../ProductItem/ProductItem';
-import './ProductList.css';
+import { useTelegram } from '../hooks/useTelegram';
+import ProductItem from './ProductItem';
 
 const ProductList = () => {
     const { tg, products, onSendData, onAdd } = useTelegram();
@@ -19,7 +20,6 @@ const ProductList = () => {
                 <ProductItem
                     product={product}
                     onAdd={onAdd}
-                    className='item'
                 />
             ))}
         </div>

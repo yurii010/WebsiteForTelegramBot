@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import './App.css';
 import { useTelegram } from './hooks/useTelegram';
-import Header from './components/Header/Header';
+import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
-import ProductList from './components/ProductList/ProductList';
-import Form from './components/Form/Form';
-import AboutProduct from './components/AboutProduct/AboutProduct';
+import ProductList from './components/ProductList';
+import Form from './components/Form';
+import AboutProduct from './components/AboutProduct';
 
 function App() {
   const { tg } = useTelegram();
@@ -16,12 +16,12 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Routes>
         <Route path={'/'} element={<ProductList />} />
         <Route path={'form'} element={<Form />} />
         <Route path={`about/:id`} element={<AboutProduct />} />
       </Routes>
-      <Header />
     </div>
   );
 };

@@ -1,9 +1,190 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* General */
+
+* {
   padding: 0px;
   margin: 0px;
 }
 
-body{
-  background-color: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color);
+body {
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: normal;
+
+  color: white;
+  background-color: #242424;
+}
+
+.App {
+  width: 100%;
+  height: 99%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+
+.header {
+  width: 100%;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #202020;
+}
+
+.username {
+  padding-top: 15px;
+}
+
+.close-button {
+  padding: 15px 30px;
+
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  background-color: #006aff;
+
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.15s ease-in;
+}
+
+/* Product List */
+
+.list {
+  width: 1000px;
+  margin: auto;
+  padding: 20px 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+/* Product Items */
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5px;
+  background-color: #151515;
+  border-radius: 20px;
+}
+
+.product-image-div {
+  width: 180px;
+  height: 180px;
+  padding: 10px;
+
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px;
+  background-color: #242424;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+}
+
+.product-description {
+  padding: 10px 30px;
+}
+
+.product-buttons {
+  width: 170px;
+  margin: 7px 0px;
+  padding: 10px 0px;
+
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  background-color: #006aff;
+
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.15s ease-in;
+}
+
+.title,
+.description,
+.price {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+}
+
+/* Form */
+
+.form {
+  padding: 20px;
+  row-gap: 20px;
+
+  background-color: #151515;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-form {
+  font-weight: normal;
+  font-size: 24px;
+}
+
+.input-form,
+.select-form {
+  width: 150px;
+  height: 25px;
+  font-weight: normal;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: none;
+  color: white;
+  background-color: #242424;
+}
+
+.select-form {
+  width: 160px;
+}
+
+/* Else */
+
+.mt {
+  margin-top: 20px;
+}
+
+/* Animation */
+
+.close-button:hover,
+.product-buttons:hover {
+  transform: scale(1.1);
 }

@@ -1,5 +1,6 @@
-import { useTelegram } from '../../hooks/useTelegram';
-import './Form.css';
+import '../App.css';
+
+import { useTelegram } from '../hooks/useTelegram';
 import { useEffect, useState, useCallback } from 'react';
 
 const Form = () => {
@@ -10,19 +11,19 @@ const Form = () => {
 
     const onSendData = useCallback(() => {
         const data = {
-          country,
-          city,
-          subject
+            country,
+            city,
+            subject
         }
         tg.sendData(JSON.stringify(data));
-      }, [country, city, subject])
-    
-      useEffect(() => {
+    }, [country, city, subject])
+
+    useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
         return () => {
-          tg.offEvent('mainButtonClicked', onSendData)
+            tg.offEvent('mainButtonClicked', onSendData)
         }
-      }, [onSendData])
+    }, [onSendData])
 
     useEffect(() => {
         tg.MainButton.setParams({
@@ -51,11 +52,11 @@ const Form = () => {
     }
 
     return (
-        <div className='form'>
-            <h3>Your credentials</h3>
-            <input className={'input'} type="text" placeholder={'Your country'} value={country} onChange={onChangeCountry} />
-            <input className={'input'} type="text" placeholder={'Your city'} value={city} onChange={onChangeCity} />
-            <select className='select' value={subject} onChange={onChangeSubject}>
+        <div className='form mt'>
+            <h3 className='title-form'>Your credentials</h3>
+            <input className='input-form' type="text" placeholder={'Your country'} value={country} onChange={onChangeCountry} />
+            <input className='input-form' type="text" placeholder={'Your city'} value={city} onChange={onChangeCity} />
+            <select className='select-form' value={subject} onChange={onChangeSubject}>
                 <option value={"male"}>Male</option>
                 <option value={"female"}>Female</option>
             </select>

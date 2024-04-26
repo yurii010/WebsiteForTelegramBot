@@ -1,16 +1,17 @@
-import './Header.css';
-import Button from '../Button/Button';
-import { useTelegram } from '../../hooks/useTelegram';
+import '../App.css';
+
+import Button from './Button';
+import { useTelegram } from '../hooks/useTelegram';
 
 const Header = () => {
     const { onClose, user } = useTelegram();
 
     return (
         <div className='header'>
+            <Button className="close-button" onClick={onClose}>Close</Button>
             <span className='username'>
                 {user?.username}
             </span>
-            <Button className="close-button" onClick={onClose}>Close</Button>
         </div>
     );
 };
