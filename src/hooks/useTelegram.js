@@ -80,6 +80,7 @@ export const TelegramProvider = ({ children }) => {
         tg,
         products,
         addedItems,
+        user: tg.initDataUnsafe?.user,
         setAddedItems,
         getTotalPrice,
         onSendData,
