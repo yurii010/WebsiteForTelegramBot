@@ -3,7 +3,12 @@ import { createContext, useContext, useState, useCallback } from 'react';
 const TelegramContext = createContext();
 
 export const TelegramProvider = ({ children }) => {
+
+    /* State */
+
     const [addedItems, setAddedItems] = useState([]);
+
+    /* Properties */
 
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
@@ -20,6 +25,12 @@ export const TelegramProvider = ({ children }) => {
         { id: '9', title: 'Cherry', price: 900, description: 'Great', image: 'https://freepngimg.com/thumb/cherry/1-red-cherry-png-image-download.png' },
         { id: '10', title: 'Tangerin', price: 1000, description: 'Good', image: 'https://freepngimg.com/thumb/orange/5-orange-png-image-download.png' },
     ];
+
+    /* Methods */
+
+    const onClose = () => {
+        tg.close();
+    }
 
     const getTotalPrice = (items = []) => {
         return items.reduce((acc, item) => {
@@ -63,6 +74,8 @@ export const TelegramProvider = ({ children }) => {
         })
     }, [addedItems, queryId])
 
+    /* Return */
+
     const contextValue = {
         tg,
         products,
@@ -70,6 +83,7 @@ export const TelegramProvider = ({ children }) => {
         setAddedItems,
         getTotalPrice,
         onSendData,
+        onClose,
         onAdd,
     };
 
