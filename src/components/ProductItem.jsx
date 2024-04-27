@@ -8,7 +8,6 @@ const ProductItem = ({ product, onAdd }) => {
     const onAddHandler = () => {
         onAdd(product);
     }
-    console.log(product.image)
     return (
         <div className='product'>
             <div className='product-image-div'>

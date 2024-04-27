@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { decrement, increment } from '../redux/slicer';
+import { createContext, useContext, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { add, remove } from '../redux/slicer';
 
 const TelegramContext = createContext();
 
@@ -8,6 +8,7 @@ export const TelegramProvider = ({ children }) => {
 
     /* State */
 
+    const addedItems = useSelector((state) => state.addedArray.arr);
     const dispatch = useDispatch()
 
     /* Properties */
