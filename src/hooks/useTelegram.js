@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { decrement, increment } from '../redux/slicer';
 
 const TelegramContext = createContext();
 
@@ -6,7 +8,7 @@ export const TelegramProvider = ({ children }) => {
 
     /* State */
 
-    const [addedItems, setAddedItems] = useState([]);
+    const dispatch = useDispatch()
 
     /* Properties */
 
@@ -43,8 +45,10 @@ export const TelegramProvider = ({ children }) => {
         let newItems = [];
         if (alreadyAdded) {
             newItems = addedItems.filter((item) => item.id !== product.id);
+            dispatch(increment(newItems));
         } else {
             newItems = [...addedItems, product];
+            dispatch(decrement(newItems));
         }
 
         setAddedItems(newItems);
