@@ -8,15 +8,15 @@ export const counterSlice = createSlice({
     name: 'addedArray',
     initialState,
     reducers: {
-        increment: (state, value) => {
-            state.value += value
+        add: (state, action) => {
+            state.arr.push(action.payload);
         },
-        decrement: (state, value) => {
-            state.value -= value
+        remove: (state, action) => {
+            state.arr = state.arr.filter(item => item.id !== action.payload.id); 
         },
     },
 })
 
-export const { increment, decrement } = counterSlice.actions
+export const { add, remove } = counterSlice.actions
 
 export default counterSlice.reducer

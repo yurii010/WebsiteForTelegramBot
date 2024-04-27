@@ -42,22 +42,21 @@ export const TelegramProvider = ({ children }) => {
 
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find((item) => item.id === product.id);
-        let newItems = [];
+        const updatedItems = []
         if (alreadyAdded) {
             newItems = addedItems.filter((item) => item.id !== product.id);
-            dispatch(increment(newItems));
+            dispatch(remove(product));
         } else {
             newItems = [...addedItems, product];
-            dispatch(decrement(newItems));
+            dispatch(add(product)); 
         }
 
-        setAddedItems(newItems);
-        if (newItems.length === 0) {
+        if (updatedItems.length === 0) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Buy ${getTotalPrice(newItems)}`,
+                text: `Buy ${getTotalPrice(updatedItems)}`,
             });
         }
     };
@@ -85,7 +84,6 @@ export const TelegramProvider = ({ children }) => {
         products,
         addedItems,
         user: tg.initDataUnsafe?.user,
-        setAddedItems,
         getTotalPrice,
         onSendData,
         onClose,
