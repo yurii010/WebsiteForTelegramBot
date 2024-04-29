@@ -4,7 +4,7 @@ import Button from './Button';
 import { useTelegram } from '../hooks/useTelegram';
 
 const Header = () => {
-    const { onClose, user, userInfo } = useTelegram();
+    const { onClose, user } = useTelegram();
 
     return (
         <div className='header'>
@@ -13,7 +13,6 @@ const Header = () => {
                 {user?.username}
                 {user?.firstname}
                 {user?.language_code}
-                {user?.id}
             </span>
         </div>
     );
