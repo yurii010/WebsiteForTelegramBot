@@ -13,6 +13,8 @@ export const TelegramProvider = ({ children }) => {
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
 
+    
+
     const products = [
         { id: '1', title: 'Banana', price: 100, description: 'Good', image: 'https://freepngimg.com/thumb/banana/13-banana-png-image-bananas-picture-download.png' },
         { id: '2', title: 'Apple', price: 200, description: 'Well', image: 'https://freepngimg.com/thumb/apple/9-apple-png-image.png' },
