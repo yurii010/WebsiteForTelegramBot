@@ -14,7 +14,6 @@ export const TelegramProvider = ({ children }) => {
     const queryId = tg.initDataUnsafe?.query_id;
 
     const userInfo = { id: queryId.id, first_name: queryId.first_name, user_name: queryId.user_name, language_code: queryId.language_code }
-    console.log(userInfo);
 
     const products = [
         { id: '1', title: 'Banana', price: 100, description: 'Good', image: 'https://freepngimg.com/thumb/banana/13-banana-png-image-bananas-picture-download.png' },
@@ -89,6 +88,7 @@ export const TelegramProvider = ({ children }) => {
         onSendData,
         onClose,
         onAdd,
+        userInfo,
     };
 
     return (
