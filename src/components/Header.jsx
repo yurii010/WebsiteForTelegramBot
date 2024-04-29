@@ -10,9 +10,10 @@ const Header = () => {
         <div className='header'>
             <Button className="close-button" onClick={onClose}>Close</Button>
             <span className='username'>
-                {user?.username}
-                {user?.firstname}
-                {user?.language_code}
+                ID: {user?.id} <br />
+                Username: {user?.username} <br />
+                Name: {user?.first_name} <br />
+                Language: {user?.language_code}
             </span>
         </div>
     );

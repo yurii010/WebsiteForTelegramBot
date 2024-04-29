@@ -86,7 +86,7 @@ export const TelegramProvider = ({ children }) => {
         onSendData,
         onClose,
         onAdd,
-    };
+        };
 
     return (
         <TelegramContext.Provider value={contextValue}>
