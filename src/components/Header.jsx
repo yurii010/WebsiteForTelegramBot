@@ -11,10 +11,9 @@ const Header = () => {
             <Button className="close-button" onClick={onClose}>Close</Button>
             <span className='username'>
                 {user?.username}
-                {userInfo.id}
-                {userInfo.first_name}
-                {userInfo.user_name}
-                {userInfo.language_code}
+                {user?.firstname}
+                {user?.language_code}
+                {user?.id}
             </span>
         </div>
     );
