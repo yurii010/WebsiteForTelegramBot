@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 const TelegramContext = createContext();
 
@@ -7,6 +7,7 @@ export const TelegramProvider = ({ children }) => {
     /* State */
 
     const [addedItems, setAddedItems] = useState([]);
+    const [users, setUsers] = useState([]);
 
     /* Properties */
 
@@ -76,6 +77,18 @@ export const TelegramProvider = ({ children }) => {
             body: JSON.stringify(data)
         })
     }, [addedItems, queryId])
+
+    const getUsers = async () => {
+        const response = await fetch('https://a0ad-217-196-161-98.ngrok-free.app/users');
+        const data = await response.json();
+        setUsers(data);
+    };
+
+    useEffect(() => {
+        getUsers();
+    }, []);
+
+    console.log(users.language_code);
 
     /* Return */
 
