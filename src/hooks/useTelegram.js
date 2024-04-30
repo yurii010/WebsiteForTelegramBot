@@ -65,7 +65,7 @@ export const TelegramProvider = ({ children }) => {
             queryId,
         }
         // need change localhost and port /web-data
-        fetch('https://4352-217-196-161-98.ngrok-free.app/web-data', {
+        fetch('https://5b97-217-196-161-98.ngrok-free.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
