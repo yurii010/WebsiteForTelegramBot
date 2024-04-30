@@ -7,7 +7,8 @@ const Form = () => {
     const { tg, userLanguage } = useTelegram();
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
-    const [subject, setSubject] = useState(userLanguage == 'uk' || 'ru' ? 'чоловіча' : 'male');
+    const [subject, setSubject] = useState('male');
+    //userLanguage == 'uk' || 'ru' ? 'чоловіча' : 'male'
 
     const onSendData = useCallback(() => {
         const data = {
@@ -26,8 +27,9 @@ const Form = () => {
     }, [onSendData])
 
     useEffect(() => {
+        //(userLanguage == 'uk' || 'ru' ? 'Відправити дані!' : 'Send credentials!')
         tg.MainButton.setParams({
-            text: (userLanguage == 'uk' || 'ru' ? 'Відправити дані!' : 'Send credentials!')
+            text: "Send credentials"
         })
     }, [])
 
@@ -57,10 +59,13 @@ const Form = () => {
             <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваша країна' : 'Your country'} value={country} onChange={onChangeCountry} />
             <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваше місто' : 'Your city'} value={city} onChange={onChangeCity} />
             <select className='select-form' value={subject} onChange={onChangeSubject}>
-                <option value={"male"}>{userLanguage == 'uk' || 'ru' ? 'Чоловік' : 'Male'}</option>
-                <option value={"female"}>{userLanguage == 'uk' || 'ru' ? 'Жінка' : 'Female'}</option>
+                <option value={"male"}>Male</option>
+                <option value={"female"}>Female</option>
             </select>
         </div>
     );
 };
 export default Form;
+
+//{userLanguage == 'uk' || 'ru' ? 'Чоловік' : 'Male'}
+//{userLanguage == 'uk' || 'ru' ? 'Жінка' : 'Female'}
