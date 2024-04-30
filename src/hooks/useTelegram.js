@@ -68,7 +68,7 @@ export const TelegramProvider = ({ children }) => {
             queryId,
         }
         // need change localhost and port /web-data
-        fetch('https://a0ad-217-196-161-98.ngrok-free.app/web-data', {
+        fetch('https://9785-217-196-161-98.ngrok-free.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,6 +76,17 @@ export const TelegramProvider = ({ children }) => {
             body: JSON.stringify(data)
         })
     }, [addedItems, queryId])
+
+    async function fetchUsers() {
+        const response = await fetch('https://9785-217-196-161-98.ngrok-free.app/users', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+    }
+    fetchUsers()
 
     /* Return */
 
