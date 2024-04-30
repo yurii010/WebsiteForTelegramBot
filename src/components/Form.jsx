@@ -57,7 +57,7 @@ const Form = () => {
             <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваша країна' : 'Your country'} value={country} onChange={onChangeCountry} />
             <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваше місто' : 'Your city'} value={city} onChange={onChangeCity} />
             <select className='select-form' value={subject} onChange={onChangeSubject}>
-                <option value={userLanguage == 'uk' || 'ru' ? 'чоловіча' : 'male'}>{userLanguage == 'uk' || 'ru' ? 'Чолові' : 'Male'}</option>
+                <option value={userLanguage == 'uk' || 'ru' ? 'чоловіча' : 'male'}>{userLanguage == 'uk' || 'ru' ? 'Чоловік' : 'Male'}</option>
                 <option value={userLanguage == 'uk' || 'ru' ? 'жіноча' : 'female'}>{userLanguage == 'uk' || 'ru' ? 'Жіноча' : 'Female'}</option>
             </select>
         </div>

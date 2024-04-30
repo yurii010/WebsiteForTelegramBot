@@ -31,11 +31,11 @@ const AboutProduct = () => {
                 <div className='title' >{product.title}</div>
                 <div className='description' >{product.description}</div >
                 <div className='price' >
-                    <span> {userLanguage == 'uk' || 'ru' ? 'Ціна: ' : 'Price: '}<b>{product.price}</b></span>
+                    <span>{userLanguage == 'uk' || 'ru' ? 'Ціна: ' : 'Price: '}<b>{product.price}</b></span>
                 </div>
             </div>
             <Button className='product-buttons' onClick={onAddHandler}>
-            {userLanguage == 'uk' || 'ru' ? 'Додати' : 'Add'}
+                {userLanguage == 'uk' || 'ru' ? 'Додати' : 'Add'}
             </Button>
             <Link className='link' to="/">
                 <Button className='product-buttons'>
