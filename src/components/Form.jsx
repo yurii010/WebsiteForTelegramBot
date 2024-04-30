@@ -53,11 +53,15 @@ const Form = () => {
         setSubject(e.target.value);
     }
 
+    //{userLanguage == 'uk' || 'ru' ? 'Ваші облікові записи' : 'Your credentials'}
+    //userLanguage == 'uk' || 'ru' ? 'Ваша країна' : 'Your country'}
+    //{userLanguage == 'uk' || 'ru' ? 'Ваше місто' : 'Your city'}
+
     return (
         <div className='form mt'>
-            <h3 className='title-form'>{userLanguage == 'uk' || 'ru' ? 'Ваші облікові записи' : 'Your credentials'}</h3>
-            <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваша країна' : 'Your country'} value={country} onChange={onChangeCountry} />
-            <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваше місто' : 'Your city'} value={city} onChange={onChangeCity} />
+            <h3 className='title-form'>Your credentials</h3>
+            <input className='input-form' type="text" placeholder={'Your country'} value={country} onChange={onChangeCountry} />
+            <input className='input-form' type="text" placeholder={'Your city'} value={city} onChange={onChangeCity} />
             <select className='select-form' value={subject} onChange={onChangeSubject}>
                 <option value={"male"}>Male</option>
                 <option value={"female"}>Female</option>
