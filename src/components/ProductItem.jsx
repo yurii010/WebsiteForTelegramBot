@@ -2,8 +2,10 @@ import '../App.css';
 
 import Button from './Button';
 import { Link } from 'react-router-dom';
+import { useTelegram } from '../hooks/useTelegram';
 
 const ProductItem = ({ product, onAdd }) => {
+    const { userLanguage } = useTelegram();
 
     const onAddHandler = () => {
         onAdd(product);
@@ -17,16 +19,16 @@ const ProductItem = ({ product, onAdd }) => {
                 <div className='title' >{product.title}</div>
                 <div className='description' > {product.description}</div >
                 <div className='price' >
-                    <span>Price: <b>{product.price}</b></span>
+                    <span>{userLanguage == 'uk' || 'ru' ? 'Ціна: ' : 'Price: '} <b>{product.price}</b></span>
                 </div>
             </div>
             <Link className='link' to={`/about/${product.id}`}>
                 <Button className='product-buttons'>
-                    More about
+                    {userLanguage == 'uk' || 'ru' ? 'Більше про' : 'More about'}
                 </Button>
             </Link>
             <Button className='product-buttons' onClick={onAddHandler}>
-                Add
+                {userLanguage == 'uk' || 'ru' ? 'Додати' : 'Add'}
             </Button>
         </div >
     );

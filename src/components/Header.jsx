@@ -4,13 +4,13 @@ import Button from './Button';
 import { useTelegram } from '../hooks/useTelegram';
 
 const Header = () => {
-    const { onClose, user } = useTelegram();
+    const { onClose, user, userLanguage } = useTelegram();
 
     return (
         <div className='header'>
-            <Button className="close-button" onClick={onClose}>Close</Button>
+            <Button className="close-button" onClick={onClose}>{userLanguage == 'uk' || 'ru' ? 'Закрити' : 'Close'}</Button>
             <span className='username'>
-                Your username: {user?.username}
+                {userLanguage == 'uk' || 'ru' ? 'Ваш нікнейм: ' : 'Your username: '}{user?.username}
             </span>
         </div>
     );

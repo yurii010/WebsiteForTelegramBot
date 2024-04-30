@@ -12,7 +12,8 @@ export const TelegramProvider = ({ children }) => {
 
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
-    const userLanguage = user.language_code;
+    const user = tg.initDataUnsafe?.user;
+    const userLanguage = user?.language_code;
 
     const products = [
         { id: '1', title: (userLanguage == 'uk' || 'ru' ? 'Банани' : 'Banana'), price: 100, description: (userLanguage == 'uk' || 'ru' ? 'Добрі' : 'Good'), image: 'https://freepngimg.com/thumb/banana/13-banana-png-image-bananas-picture-download.png' },
@@ -54,7 +55,7 @@ export const TelegramProvider = ({ children }) => {
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Buy ${getTotalPrice(newItems)}`,
+                text: `${(userLanguage == 'uk' || 'ru' ? 'Купити' : 'Buy')} ${getTotalPrice(newItems)}`,
             });
         }
     };
@@ -81,7 +82,8 @@ export const TelegramProvider = ({ children }) => {
         tg,
         products,
         addedItems,
-        user: tg.initDataUnsafe?.user,
+        user,
+        userLanguage,
         setAddedItems,
         getTotalPrice,
         onSendData,
