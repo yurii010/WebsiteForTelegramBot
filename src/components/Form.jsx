@@ -4,10 +4,10 @@ import { useTelegram } from '../hooks/useTelegram';
 import { useEffect, useState, useCallback } from 'react';
 
 const Form = () => {
+    const { tg, userLanguage } = useTelegram();
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [subject, setSubject] = useState(userLanguage == 'uk' || 'ru' ? 'чоловіча' : 'male');
-    const { tg, userLanguage } = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
@@ -57,8 +57,8 @@ const Form = () => {
             <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваша країна' : 'Your country'} value={country} onChange={onChangeCountry} />
             <input className='input-form' type="text" placeholder={userLanguage == 'uk' || 'ru' ? 'Ваше місто' : 'Your city'} value={city} onChange={onChangeCity} />
             <select className='select-form' value={subject} onChange={onChangeSubject}>
-                <option value={"male"}>{userLanguage == 'uk' || 'ru' ? 'Чоловіча' : 'Male'}</option>
-                <option value={"female"}>{userLanguage == 'uk' || 'ru' ? 'Жіноча' : 'Female'}</option>
+                <option value={"male"}>{userLanguage == 'uk' || 'ru' ? 'Чоловік' : 'Male'}</option>
+                <option value={"female"}>{userLanguage == 'uk' || 'ru' ? 'Жінка' : 'Female'}</option>
             </select>
         </div>
     );
