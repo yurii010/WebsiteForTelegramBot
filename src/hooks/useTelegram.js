@@ -14,7 +14,6 @@ export const TelegramProvider = ({ children }) => {
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
     const userLanguage = user?.language_code;
-    console.log(userLanguage);
 
     const products = [
         { id: '1', title: (userLanguage == 'uk' || 'ru' ? 'Банани' : 'Banana'), price: 100, description: (userLanguage == 'uk' || 'ru' ? 'Добрі' : 'Good'), image: 'https://freepngimg.com/thumb/banana/13-banana-png-image-bananas-picture-download.png' },
