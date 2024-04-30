@@ -88,8 +88,6 @@ export const TelegramProvider = ({ children }) => {
         getUsers();
     }, []);
 
-    console.log(users.language_code);
-
     /* Return */
 
     const contextValue = {
@@ -98,6 +96,7 @@ export const TelegramProvider = ({ children }) => {
         addedItems,
         user,
         userLanguage,
+        users,
         setAddedItems,
         getTotalPrice,
         onSendData,
