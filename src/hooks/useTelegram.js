@@ -13,7 +13,7 @@ export const TelegramProvider = ({ children }) => {
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
-    const userId = user?.id;
+    const userId = {userId: user?.id};
     const userLanguage = user?.language_code;
 
     const products = [
