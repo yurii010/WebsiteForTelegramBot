@@ -77,6 +77,18 @@ export const TelegramProvider = ({ children }) => {
         })
     }, [addedItems, queryId])
 
+    const onSendId = useCallback(() => {
+        const data = { userId }
+
+        fetch('https://39c4-217-196-161-98.ngrok-free.app/language', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [userId])
+
     /* Return */
 
     const contextValue = {
@@ -84,8 +96,9 @@ export const TelegramProvider = ({ children }) => {
         products,
         addedItems,
         user,
-        userId,
         userLanguage,
+        onSendData,
+        onSendId,
         setAddedItems,
         getTotalPrice,
         onSendData,
