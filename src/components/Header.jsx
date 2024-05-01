@@ -5,17 +5,9 @@ import { useEffect, useState } from 'react';
 import { useTelegram } from '../hooks/useTelegram';
 
 const Header = () => {
-    const { onClose, user, userLanguage, userId, onSendId } = useTelegram();
-    const [userLang, setUserLang] = useState(null);
+    const { onClose, user, userLanguage, userLang } = useTelegram();
 
-    useEffect(() => {
-        const fetchLanguage = async () => {
-            const lang = await onSendId(userId);
-            setUserLang(lang);
-        };
 
-        fetchLanguage();
-    }, [userId, onSendId]);
 
     return (
         <div className='header'>
