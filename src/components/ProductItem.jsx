@@ -19,16 +19,16 @@ const ProductItem = ({ product, onAdd }) => {
                 <div className='title' >{product.title}</div>
                 <div className='description' > {product.description}</div >
                 <div className='price' >
-                    <span>{userLanguage == 'uk' || 'ru' ? 'Ціна: ' : 'Price: '} <b>{product.price}</b></span>
+                    <span>{userLanguage == 'uk' ? 'Ціна: ' : 'Price: '} <b>{product.price}</b></span>
                 </div>
             </div>
             <Link className='link' to={`/about/${product.id}`}>
                 <Button className='product-buttons'>
-                    {userLanguage == 'uk' || 'ru' ? 'Більше про' : 'More about'}
+                    {userLanguage == 'uk' ? 'Більше про' : 'More about'}
                 </Button>
             </Link>
             <Button className='product-buttons' onClick={onAddHandler}>
-                {userLanguage == 'uk' || 'ru' ? 'Додати' : 'Add'}
+                {userLanguage == 'uk' ? 'Додати' : 'Add'}
             </Button>
         </div >
     );

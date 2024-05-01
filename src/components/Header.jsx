@@ -10,9 +10,9 @@ const Header = () => {
     
     return (
         <div className='header'>
-            <Button className="close-button" onClick={onClose}>{userLanguage == 'uk' || 'ru' ? 'Закрити' : 'Close'}</Button>
+            <Button className="close-button" onClick={onClose}>{userLanguage == 'uk'  ? 'Закрити' : 'Close'}</Button>
             <span className='username'>
-                {userLanguage == 'uk' || 'ru' ? 'Ваш нікнейм: ' : 'Your username: '}{user?.username}<br />
+                {userLanguage == 'uk'  ? 'Ваш нікнейм: ' : 'Your username: '}{user?.username}<br />
                 Test work?: {userId}
             </span>
         </div>
