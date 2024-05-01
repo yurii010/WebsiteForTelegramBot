@@ -77,17 +77,22 @@ export const TelegramProvider = ({ children }) => {
         })
     }, [addedItems, queryId])
 
-    const onSendId = useCallback(() => {
-        const data = { userId }
-
-        fetch('https://39c4-217-196-161-98.ngrok-free.app/language', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [userId])
+    async function onSendId(userId) {
+        try {
+            const response = await fetch('http://localhost:8000/get-user-language', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId }),
+            });  
+            const data = await response.json();
+            return data.language; 
+        } catch (error) {
+            console.error('Error fetching user language:', error.message);
+            return null; 
+        }
+    }
 
     /* Return */
 
