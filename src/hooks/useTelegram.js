@@ -7,6 +7,7 @@ export const TelegramProvider = ({ children }) => {
     /* State */
 
     const [addedItems, setAddedItems] = useState([]);
+    const [userLang, setUserLang] = useState(null);
 
     /* Properties */
 
@@ -77,11 +78,9 @@ export const TelegramProvider = ({ children }) => {
         })
     }, [addedItems, queryId])
 
-    const [userLang, setUserLang] = useState(null);
-
     async function onSendId(userId) {
         try {
-            const response = await fetch('http://localhost:8000/get-user-language', {
+            const response = await fetch('https://39c4-217-196-161-98.ngrok-free.app/getUserLanguage', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -89,20 +88,20 @@ export const TelegramProvider = ({ children }) => {
                 body: JSON.stringify({ userId }),
             });
             const data = await response.json();
-            return data.language;
+            const lang = JSON.parse(data);
         } catch (e) {
             return console.log(e);
         }
     }
 
     useEffect(() => {
-        const fetchLanguage = async () => {
+        const getUserLang = async () => {
             const lang = await onSendId(userId);
             setUserLang(lang);
         };
-
-        fetchLanguage();
-    }, [userId, onSendId]);
+    
+        getUserLang();
+    }, [userId]);
 
     /* Return */
 
@@ -114,10 +113,8 @@ export const TelegramProvider = ({ children }) => {
         userLanguage,
         userLang,
         onSendData,
-        onSendId,
         setAddedItems,
         getTotalPrice,
-        onSendData,
         onClose,
         onAdd,
     };
