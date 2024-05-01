@@ -14,7 +14,7 @@ export const TelegramProvider = ({ children }) => {
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
-    const userId = { userId: user?.id };
+    const userId = user?.id;
     const userLanguage = user?.language_code;
 
     const products = [
@@ -69,7 +69,7 @@ export const TelegramProvider = ({ children }) => {
             queryId,
         }
         // need change localhost and port /web-data
-        fetch('https://39c4-217-196-161-98.ngrok-free.app/web-data', {
+        fetch('https://e295-217-196-161-98.ngrok-free.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,30 +78,22 @@ export const TelegramProvider = ({ children }) => {
         })
     }, [addedItems, queryId])
 
-    async function onSendId(userId) {
-        try {
-            const response = await fetch('https://39c4-217-196-161-98.ngrok-free.app/getUserLanguage', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ userId }),
-            });
-            const data = await response.json();
-            const lang = JSON.parse(data);
-        } catch (e) {
-            return console.log(e);
-        }
-    }
+    const onSendId = useCallback(async () => {
+        const data = { userId }
+        fetch('https://e295-217-196-161-98.ngrok-free.app/getUserLanguage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        setUserLang(result);
+    }, [userId])
 
     useEffect(() => {
-        const getUserLang = async () => {
-            const lang = await onSendId(userId);
-            setUserLang(lang);
-        };
-    
-        getUserLang();
-    }, [userId]);
+        onSendId();
+    }, [onSendId]);
 
     /* Return */
 
