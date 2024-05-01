@@ -2,9 +2,14 @@ import '../App.css';
 
 import Button from './Button';
 import { useTelegram } from '../hooks/useTelegram';
+import { useEffect } from 'react';
 
 const Header = () => {
-    const { onClose, user, userLanguage, userLang } = useTelegram();
+    const { onClose, user, userLanguage, userLang, onSendId } = useTelegram();
+
+    useEffect(() => {
+        onSendId
+    }, [onSendId])
 
     return (
         <div className='header'>

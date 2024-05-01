@@ -80,23 +80,30 @@ export const TelegramProvider = ({ children }) => {
     }, [addedItems, queryId])
 
     const onSendId = useCallback(async () => {
-        const data = { userId }
-        fetch('https://e295-217-196-161-98.ngrok-free.app/getUserLanguage', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        const result = await response.json();
-        console.log(result)
-    }, [userId])
-
-    useEffect(() => {
-        return () => {
-            onSendId();
+        const data = { userId };
+        try {
+            const response = await fetch('https://e295-217-196-161-98.ngrok-free.app/getUserLanguage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            setUserLang(result);
+        } catch (error) {
+            console.error("Error fetching user language", error);
         }
-    }, [onSendId, userLang]);
+    }, [userId]);
+
+    // const result = await response.json();
+    // console.log(result)
+
+    // useEffect(() => {
+    //     return () => {
+    //         onSendId();
+    //     }
+    // }, [onSendId, userLang]);
 
     /* Return */
 
@@ -107,6 +114,7 @@ export const TelegramProvider = ({ children }) => {
         user,
         userLanguage,
         userLang,
+        onSendId,
         onSendData,
         setAddedItems,
         getTotalPrice,
