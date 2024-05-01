@@ -26,7 +26,7 @@ const Header = () => {
             <Button className="close-button" onClick={onClose}>{userLanguage == 'uk' || 'ru' ? 'Закрити' : 'Close'}</Button>
             <span className='username'>
                 {userLanguage == 'uk' || 'ru' ? 'Ваш нікнейм: ' : 'Your username: '}{user?.username}<br />
-                Test: {userLang}
+                Test work?: {userLang}
             </span>
         </div>
     );
