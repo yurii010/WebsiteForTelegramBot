@@ -7,8 +7,9 @@ import { useTelegram } from '../hooks/useTelegram';
 const Header = () => {
     const { onClose, user, userLanguage, onSendId } = useTelegram();
     const [userLang, setUserLang] = useState();
-    setUserLang(onSendId);
-
+    useEffect(() => {
+        setUserLang(onSendId); 
+      }, [onSendId]);
     return (
         <div className='header'>
             <Button className="close-button" onClick={onClose}>{userLanguage == 'uk'  ? 'Закрити' : 'Close'}</Button>
