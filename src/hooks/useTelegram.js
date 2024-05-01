@@ -13,8 +13,8 @@ export const TelegramProvider = ({ children }) => {
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
+    const userId = user?.userId;
     const userLanguage = user?.language_code;
-
 
     const products = [
         { id: '1', title: (userLanguage == 'uk' || 'ru' ? 'Банани' : 'Banana'), price: 100, description: (userLanguage == 'uk' || 'ru' ? 'Добрі' : 'Good'), image: 'https://freepngimg.com/thumb/banana/13-banana-png-image-bananas-picture-download.png' },
@@ -76,15 +76,6 @@ export const TelegramProvider = ({ children }) => {
             body: JSON.stringify(data)
         })
     }, [addedItems, queryId])
-    // need change localhost and port /web-data
-    const sendData = useCallback(() => {
-        return fetch('https://39c4-217-196-161-98.ngrok-free.app/users', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-    })
 
     /* Return */
 
@@ -93,11 +84,11 @@ export const TelegramProvider = ({ children }) => {
         products,
         addedItems,
         user,
+        userId,
         userLanguage,
         setAddedItems,
         getTotalPrice,
         onSendData,
-        sendData,
         onClose,
         onAdd,
     };
