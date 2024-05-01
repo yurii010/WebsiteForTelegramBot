@@ -14,7 +14,8 @@ export const TelegramProvider = ({ children }) => {
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
-    const userId = user?.id;
+    const userId = 859868539;
+    //const userId = user?.id;
     const userLanguage = user?.language_code;
 
     const products = [
@@ -88,12 +89,14 @@ export const TelegramProvider = ({ children }) => {
             body: JSON.stringify(data),
         });
         const result = await response.json();
-        setUserLang(result);
+        console.log(result)
     }, [userId])
 
     useEffect(() => {
-        onSendId();
-    }, [onSendId]);
+        return () => {
+            onSendId();
+        }
+    }, [onSendId, userLang]);
 
     /* Return */
 

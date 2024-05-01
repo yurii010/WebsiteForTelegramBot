@@ -18,6 +18,7 @@ const ProductList = () => {
         <div className='list'>
             {products.map(product => (
                 <ProductItem
+                    key={product.id}
                     product={product}
                     onAdd={onAdd}
                 />
