@@ -14,11 +14,8 @@ const Header = () => {
             .then(data => {
                 setUsers(data);
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
     }, [sendData]);
-    
+
     return (
         <div className='header'>
             <Button className="close-button" onClick={onClose}>{userLanguage == 'uk' || 'ru' ? 'Закрити' : 'Close'}</Button>
