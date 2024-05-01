@@ -76,6 +76,15 @@ export const TelegramProvider = ({ children }) => {
             body: JSON.stringify(data)
         })
     }, [addedItems, queryId])
+    // need change localhost and port /web-data
+    const sendData = useCallback(() => {
+        return fetch('https://39c4-217-196-161-98.ngrok-free.app/users', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+    })
 
     /* Return */
 
@@ -88,6 +97,7 @@ export const TelegramProvider = ({ children }) => {
         setAddedItems,
         getTotalPrice,
         onSendData,
+        sendData,
         onClose,
         onAdd,
     };

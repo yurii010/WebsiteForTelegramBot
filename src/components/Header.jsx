@@ -5,18 +5,20 @@ import { useEffect, useState } from 'react';
 import { useTelegram } from '../hooks/useTelegram';
 
 const Header = () => {
-    const { onClose, user, userLanguage } = useTelegram();
+    const { onClose, user, userLanguage, sendData } = useTelegram();
 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('/users')
-            .then(response => response.json())
+        sendData()
             .then(data => {
-                setUsers(data); 
+                setUsers(data);
             })
-    }, []);
-
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }, [sendData]);
+    
     return (
         <div className='header'>
             <Button className="close-button" onClick={onClose}>{userLanguage == 'uk' || 'ru' ? 'Закрити' : 'Close'}</Button>
