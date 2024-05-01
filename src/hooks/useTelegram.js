@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 const TelegramContext = createContext();
 
@@ -13,7 +13,7 @@ export const TelegramProvider = ({ children }) => {
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
-    const userId = {userId: user?.id};
+    const userId = { userId: user?.id };
     const userLanguage = user?.language_code;
 
     const products = [
@@ -77,6 +77,8 @@ export const TelegramProvider = ({ children }) => {
         })
     }, [addedItems, queryId])
 
+    const [userLang, setUserLang] = useState(null);
+
     async function onSendId(userId) {
         try {
             const response = await fetch('http://localhost:8000/get-user-language', {
@@ -85,14 +87,22 @@ export const TelegramProvider = ({ children }) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ userId }),
-            });  
+            });
             const data = await response.json();
-            return data.language; 
-        } catch (error) {
-            console.error('Error fetching user language:', error.message);
-            return null; 
+            return data.language;
+        } catch (e) {
+            return console.log(e);
         }
     }
+
+    useEffect(() => {
+        const fetchLanguage = async () => {
+            const lang = await onSendId(userId);
+            setUserLang(lang);
+        };
+
+        fetchLanguage();
+    }, [userId, onSendId]);
 
     /* Return */
 
@@ -102,9 +112,8 @@ export const TelegramProvider = ({ children }) => {
         addedItems,
         user,
         userLanguage,
-        userId,
+        userLang,
         onSendData,
-        onSendId,
         setAddedItems,
         getTotalPrice,
         onSendData,
