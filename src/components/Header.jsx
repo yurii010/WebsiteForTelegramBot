@@ -10,12 +10,11 @@ const Header = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        const fetchUsers = async () => {
-            const response = await fetch('https://9785-217-196-161-98.ngrok-free.app/users');
-            const data = await response.json();
-            setUsers(data);
-        };
-        fetchUsers();
+        fetch('/users')
+            .then(response => response.json())
+            .then(data => {
+                setUsers(data); 
+            })
     }, []);
 
     return (
