@@ -102,6 +102,7 @@ export const TelegramProvider = ({ children }) => {
         addedItems,
         user,
         userLanguage,
+        userId,
         onSendData,
         onSendId,
         setAddedItems,
