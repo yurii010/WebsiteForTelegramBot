@@ -7,14 +7,37 @@ export const TelegramProvider = ({ children }) => {
     /* State */
 
     const [addedItems, setAddedItems] = useState([]);
-    const [userLang, setUserLang] = useState(null);
+    const [userLang, setUserLang] = useState();
+    const userId = 859868539;
+
+    const onSendId = useCallback(async () => {
+        const data = { userId };
+        try {
+            const response = await fetch('https://e295-217-196-161-98.ngrok-free.app/getUserLanguage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            setUserLang(result);
+        } catch (error) {
+            console.error("Error fetching user language", error);
+        }
+    }, [userId]);
+
+    useEffect(() => {
+        onSendId()
+    }, [onSendId])
+
+    console.log(userLang);
 
     /* Properties */
 
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
-    const userId = 859868539;
     //const userId = user?.id;
     const userLanguage = user?.language_code;
 
@@ -78,23 +101,6 @@ export const TelegramProvider = ({ children }) => {
             body: JSON.stringify(data)
         })
     }, [addedItems, queryId])
-
-    const onSendId = useCallback(async () => {
-        const data = { userId };
-        try {
-            const response = await fetch('https://e295-217-196-161-98.ngrok-free.app/getUserLanguage', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-            const result = await response.json();
-            setUserLang(result);
-        } catch (error) {
-            console.error("Error fetching user language", error);
-        }
-    }, [userId]);
 
     // const result = await response.json();
     // console.log(result)

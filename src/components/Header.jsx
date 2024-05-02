@@ -5,11 +5,7 @@ import { useTelegram } from '../hooks/useTelegram';
 import { useEffect } from 'react';
 
 const Header = () => {
-    const { onClose, user, userLanguage, userLang, onSendId } = useTelegram();
-
-    useEffect(() => {
-        onSendId
-    }, [onSendId])
+    const { onClose, user, userLanguage, userLang } = useTelegram();
 
     return (
         <div className='header'>
