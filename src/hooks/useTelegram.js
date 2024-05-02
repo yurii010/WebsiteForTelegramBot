@@ -13,7 +13,7 @@ export const TelegramProvider = ({ children }) => {
     const onSendId = useCallback(async () => {
         const data = { userId };
         try {
-            const response = await fetch('https://e295-217-196-161-98.ngrok-free.app/getUserLanguage', {
+            const response = await fetch('https://82d7-217-196-161-98.ngrok-free.app/getUserLanguage', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ export const TelegramProvider = ({ children }) => {
             queryId,
         }
         // need change localhost and port /web-data
-        fetch('https://e295-217-196-161-98.ngrok-free.app/web-data', {
+        fetch('https://82d7-217-196-161-98.ngrok-free.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
