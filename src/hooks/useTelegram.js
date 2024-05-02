@@ -14,7 +14,7 @@ export const TelegramProvider = ({ children }) => {
     const onSendId = async () => {
         const data = { userId };
         try {
-            const response = await axios.post('https://82d7-217-196-161-98.ngrok-free.app/getUserLanguage', data);
+            const response = await axios.post('https://3afc-217-196-161-98.ngrok-free.app/getUserLanguage', data);
             const { userL } = response.data;
             setUserLang(userL);
         } catch (error) {
@@ -86,7 +86,7 @@ export const TelegramProvider = ({ children }) => {
             queryId,
         }
         // need change localhost and port /web-data
-        fetch('https://82d7-217-196-161-98.ngrok-free.app/web-data', {
+        fetch('https://3afc-217-196-161-98.ngrok-free.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
