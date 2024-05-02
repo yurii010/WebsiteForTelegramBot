@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import axios from 'axios';
 
 const TelegramContext = createContext();
 
@@ -13,15 +14,8 @@ export const TelegramProvider = ({ children }) => {
     const onSendId = useCallback(async () => {
         const data = { userId };
         try {
-            const response = await fetch('https://82d7-217-196-161-98.ngrok-free.app/getUserLanguage', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-            const result = await response.json();
-            setUserLang(result);
+            const response = await axios.post('https://82d7-217-196-161-98.ngrok-free.app/getUserLanguage', data);
+            setUserLang(response);
         } catch (error) {
             console.error("Error fetching user language", error);
         }
