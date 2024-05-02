@@ -9,29 +9,13 @@ export const TelegramProvider = ({ children }) => {
 
     const [addedItems, setAddedItems] = useState([]);
     const [userLang, setUserLang] = useState();
-    const userId = 859868539;
-
-    const onSendId = async () => {
-        const data = { userId };
-        try {
-            const response = await axios.post('https://3afc-217-196-161-98.ngrok-free.app/getUserLanguage', data);
-            const { userL } = response.data;
-            setUserLang(userL);
-        } catch (error) {
-            console.error("Error fetching user language", error);
-        }
-    };
-
-    useEffect(() => {
-        onSendId()
-    }, [onSendId])
 
     /* Properties */
 
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
-    //const userId = user?.id;
+    const userId = user?.id;
     const userLanguage = user?.language_code;
 
     const products = [
@@ -94,6 +78,21 @@ export const TelegramProvider = ({ children }) => {
             body: JSON.stringify(data)
         })
     }, [addedItems, queryId])
+
+    const onSendId = async () => {
+        const data = { userId };
+        try {
+            const response = await axios.post('https://3afc-217-196-161-98.ngrok-free.app/getUserLanguage', data);
+            const { userL } = response.data;
+            setUserLang(userL);
+        } catch (error) {
+            console.error("Error fetching user language", error);
+        }
+    };
+
+    useEffect(() => {
+        onSendId()
+    }, [onSendId])
 
     // const result = await response.json();
     // console.log(result)
