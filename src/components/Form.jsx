@@ -4,10 +4,10 @@ import { useTelegram } from '../hooks/useTelegram';
 import { useEffect, useState, useCallback } from 'react';
 
 const Form = () => {
-    const { tg, userLanguage } = useTelegram();
+    const { tg, userLang } = useTelegram();
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
-    const [subject, setSubject] = useState(userLanguage == 'uk' ? 'чоловіча' : 'male');
+    const [subject, setSubject] = useState(userLang == 'uk' ? 'чоловіча' : 'male');
 
     const onSendData = useCallback(() => {
         const data = {
@@ -27,7 +27,7 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: (userLanguage == 'uk' ? 'Відправити дані!' : 'Send credentials!')
+            text: (userLang == 'uk' ? 'Відправити дані!' : 'Send credentials!')
         })
     }, [])
 
@@ -53,12 +53,12 @@ const Form = () => {
 
     return (
         <div className='form mt'>
-            <h3 className='title-form'>{userLanguage == 'uk' ? 'Ваші облікові записи' : 'Your credentials'}</h3>
-            <input className='input-form' type="text" placeholder={userLanguage == 'uk' ? 'Ваша країна' : 'Your country'} value={country} onChange={onChangeCountry} />
-            <input className='input-form' type="text" placeholder={userLanguage == 'uk' ? 'Ваше місто' : 'Your city'} value={city} onChange={onChangeCity} />
+            <h3 className='title-form'>{userLang == 'uk' ? 'Ваші облікові записи' : 'Your credentials'}</h3>
+            <input className='input-form' type="text" placeholder={userLang == 'uk' ? 'Ваша країна' : 'Your country'} value={country} onChange={onChangeCountry} />
+            <input className='input-form' type="text" placeholder={userLang == 'uk' ? 'Ваше місто' : 'Your city'} value={city} onChange={onChangeCity} />
             <select className='select-form' value={subject} onChange={onChangeSubject}>
-                <option value={userLanguage == 'uk' ? 'чоловіча' : 'male'}>{userLanguage == 'uk' ? 'Чоловік' : 'Male'}</option>
-                <option value={userLanguage == 'uk' ? 'жіноча' : 'female'}>{userLanguage == 'uk' ? 'Жінка' : 'Female'}</option>
+                <option value={userLang == 'uk' ? 'чоловіча' : 'male'}>{userLang == 'uk' ? 'Чоловік' : 'Male'}</option>
+                <option value={userLang == 'uk' ? 'жіноча' : 'female'}>{userLang == 'uk' ? 'Жінка' : 'Female'}</option>
             </select>
         </div>
     );

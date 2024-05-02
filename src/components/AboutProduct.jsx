@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useTelegram } from '../hooks/useTelegram';
 
 const AboutProduct = () => {
-    const { tg, products, onSendData, onAdd, userLanguage } = useTelegram();
+    const { tg, products, onSendData, onAdd, userLang } = useTelegram();
 
     const params = useParams();
 
@@ -31,15 +31,15 @@ const AboutProduct = () => {
                 <div className='title' >{product.title}</div>
                 <div className='description' >{product.description}</div >
                 <div className='price' >
-                    <span>{userLanguage == 'uk' ? 'Ціна: ' : 'Price: '}<b>{product.price}</b></span>
+                    <span>{userLang == 'uk' ? 'Ціна: ' : 'Price: '}<b>{product.price}</b></span>
                 </div>
             </div>
             <Button className='product-buttons' onClick={onAddHandler}>
-                {userLanguage == 'uk' ? 'Додати' : 'Add'}
+                {userLang == 'uk' ? 'Додати' : 'Add'}
             </Button>
             <Link className='link' to="/">
                 <Button className='product-buttons'>
-                    {userLanguage == 'uk' ? 'Повернутись назад' : 'Go back'}
+                    {userLang == 'uk' ? 'Повернутись назад' : 'Go back'}
                 </Button>
             </Link>
         </div >

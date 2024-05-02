@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useTelegram } from '../hooks/useTelegram';
 
 const ProductItem = ({ product, onAdd }) => {
-    const { userLanguage } = useTelegram();
+    const { userLang } = useTelegram();
 
     const onAddHandler = () => {
         onAdd(product);
@@ -19,16 +19,16 @@ const ProductItem = ({ product, onAdd }) => {
                 <div className='title' >{product.title}</div>
                 <div className='description' > {product.description}</div >
                 <div className='price' >
-                    <span>{userLanguage == 'uk' ? 'Ціна: ' : 'Price: '} <b>{product.price}</b></span>
+                    <span>{userLang == 'uk' ? 'Ціна: ' : 'Price: '} <b>{product.price}</b></span>
                 </div>
             </div>
             <Link className='link' to={`/about/${product.id}`}>
                 <Button className='product-buttons'>
-                    {userLanguage == 'uk' ? 'Більше про' : 'More about'}
+                    {userLang == 'uk' ? 'Більше про' : 'More about'}
                 </Button>
             </Link>
             <Button className='product-buttons' onClick={onAddHandler}>
-                {userLanguage == 'uk' ? 'Додати' : 'Add'}
+                {userLang == 'uk' ? 'Додати' : 'Add'}
             </Button>
         </div >
     );

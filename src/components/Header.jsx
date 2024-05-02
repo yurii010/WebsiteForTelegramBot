@@ -2,16 +2,15 @@ import '../App.css';
 
 import Button from './Button';
 import { useTelegram } from '../hooks/useTelegram';
-import { useEffect } from 'react';
 
 const Header = () => {
-    const { onClose, user, userLanguage, userLang } = useTelegram();
+    const { onClose, user, userLang } = useTelegram();
 
     return (
         <div className='header'>
-            <Button className="close-button" onClick={onClose}>{userLanguage == 'uk' ? 'Закрити' : 'Close'}</Button>
+            <Button className="close-button" onClick={onClose}>{userLang == 'uk' ? 'Закрити' : 'Close'}</Button>
             <span className='username'>
-                {userLanguage == 'uk' ? 'Ваш нікнейм: ' : 'Your username: '}{user?.username}<br />
+                {userLang == 'uk' ? 'Ваш нікнейм: ' : 'Your username: '}{user?.username}<br />
                 Test: {userLang}
             </span>
         </div>
