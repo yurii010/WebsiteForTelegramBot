@@ -11,22 +11,20 @@ export const TelegramProvider = ({ children }) => {
     const [userLang, setUserLang] = useState();
     const userId = 859868539;
 
-    const onSendId = useCallback(async () => {
+    const onSendId = async () => {
         const data = { userId };
         try {
             const response = await axios.post('https://82d7-217-196-161-98.ngrok-free.app/getUserLanguage', data);
-            const { lang } = response.data;
-            setUserLang(lang);
+            const { userL } = response.data;
+            setUserLang(userL);
         } catch (error) {
             console.error("Error fetching user language", error);
         }
-    }, [userId]);
+    };
 
     useEffect(() => {
         onSendId()
     }, [onSendId])
-
-    console.log(userLang);
 
     /* Properties */
 
