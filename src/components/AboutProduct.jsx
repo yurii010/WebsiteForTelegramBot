@@ -34,14 +34,14 @@ const AboutProduct = () => {
                     <span>{userLang == 'uk' ? 'Ціна: ' : 'Price: '}<b>{product.price}</b></span>
                 </div>
             </div>
-            <Button className='product-buttons' onClick={onAddHandler}>
-                {userLang == 'uk' ? 'Додати' : 'Add'}
-            </Button>
             <Link className='link' to="/">
                 <Button className='product-buttons'>
                     {userLang == 'uk' ? 'Повернутись назад' : 'Go back'}
                 </Button>
             </Link>
+            <Button className='product-buttons' onClick={onAddHandler}>
+                {userLang == 'uk' ? 'Додати' : 'Add'}
+            </Button>
         </div >
     );
 };

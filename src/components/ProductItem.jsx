@@ -17,10 +17,10 @@ const ProductItem = ({ product, onAdd }) => {
             </div>
             <div className='product-description'>
                 <div className='title' >{product.title}</div>
-                <div className='description' > {product.description}</div >
+                {/* <div className='description' > {product.description}</div >
                 <div className='price' >
                     <span>{userLang == 'uk' ? 'Ціна: ' : 'Price: '} <b>{product.price}</b></span>
-                </div>
+                </div> */}
             </div>
             <Link className='link' to={`/about/${product.id}`}>
                 <Button className='product-buttons'>
