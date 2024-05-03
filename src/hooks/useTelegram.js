@@ -12,6 +12,8 @@ export const TelegramProvider = ({ children }) => {
 
     /* Properties */
 
+    const link = "https://a708-217-196-161-98.ngrok-free.app";
+
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const user = tg.initDataUnsafe?.user;
@@ -69,8 +71,7 @@ export const TelegramProvider = ({ children }) => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        // need change localhost and port /web-data
-        fetch('https://3afc-217-196-161-98.ngrok-free.app/web-data', {
+        fetch(`${link}/web-data`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ export const TelegramProvider = ({ children }) => {
     const onSendId = async () => {
         const data = { userId };
         try {
-            const response = await axios.post('https://3afc-217-196-161-98.ngrok-free.app/getUserLanguage', data);
+            const response = await axios.post(`${link}/getUserLanguage`, data);
             const { userL } = response.data;
             setUserLang(userL);
         } catch (error) {
