@@ -83,7 +83,7 @@ export const TelegramProvider = ({ children }) => {
     const onSendId = async () => {
         const data = { userId };
         try {
-            const response = await axios.post(`${link}/getUserLanguage`, data);
+            const response = await axios.get(`${link}/getUserLanguage`, data);
             const { userL } = response.data;
             setUserLang(userL);
         } catch (error) {

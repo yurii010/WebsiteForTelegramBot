@@ -21,8 +21,8 @@ const Profile = () => {
         const email = localStorage.getItem('email');
         try {
             const response = await axios.get(`${link}/users`, email);
-            const { username } = response.data;
-            setUsername(username);
+            const { name } = response.data;
+            setUsername(name);
         } catch (error) {
             console.error("Error fetching username", error);
         }
