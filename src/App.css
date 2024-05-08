@@ -47,6 +47,13 @@ body {
   padding-top: 15px;
 }
 
+.header-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 15px;
+}
+
 .close-button {
   padding: 15px 30px;
 
@@ -172,6 +179,22 @@ body {
 
 .select-form {
   width: 160px;
+}
+
+/* Login & Register */
+
+.container{
+  width: 350px;
+  margin: 10px 0px;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  row-gap: 10px;
 }
 
 /* Else */
