@@ -7,7 +7,6 @@ const Login = () => {
     const { link, userLang } = useTelegram();
     const [data, setData] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
-
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
     };
@@ -17,6 +16,7 @@ const Login = () => {
         try {
             const { data: res } = await axios.post(link + '/auth/login', data, { headers: { 'Accept-Language': userLang } });
             localStorage.setItem("token", res.data);
+            localStorage.setItem("email", data.email);
             window.location = "/profile";
         } catch (error) {
             if (

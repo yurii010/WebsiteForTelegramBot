@@ -87,7 +87,7 @@ export const TelegramProvider = ({ children }) => {
             const { userL } = response.data;
             setUserLang(userL);
         } catch (error) {
-            console.error("Error fetching user language", error);
+            return
         }
     };
 
