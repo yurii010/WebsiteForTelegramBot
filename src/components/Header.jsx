@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     const { onClose, user, userLang } = useTelegram();
+    const token = localStorage.getItem('token');
 
     return (
         <div className='header'>
@@ -12,7 +13,7 @@ const Header = () => {
                 <Link className='link' to={`/`}>
                     <Button className="close-button">{userLang == 'uk' ? 'Магазин' : 'Shop'}</Button>
                 </Link>
-                <Link className='link' to={`/auth/login`}>
+                <Link className='link' to={`${token ? `/profile` : `/auth/login`}`}>
                     <Button className="close-button">{userLang == 'uk' ? 'Профіль' : 'Profile'}</Button>
                 </Link>
                 <Button className="close-button" onClick={onClose}>{userLang == 'uk' ? 'Закрити' : 'Close'}</Button>

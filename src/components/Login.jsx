@@ -1,8 +1,10 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTelegram } from "../hooks/useTelegram";
 
 const Login = () => {
+    const { link } = useTelegram();
     const [data, setData] = useState({ username: "", password: "" });
     const [error, setError] = useState("");
 
@@ -13,10 +15,9 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "https://76cc-217-196-161-98.ngrok-free.app/auth/login";
-            const { data: res } = await axios.post(url, data);
+            const { data: res } = await axios.post(link, data);
             localStorage.setItem("token", res.data);
-            window.location = "/";
+            window.location = "/profile";
         } catch (error) {
             if (
                 error.response &&

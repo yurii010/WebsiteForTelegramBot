@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useTelegram } from "../hooks/useTelegram";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
     const [data, setData] = useState({ username: "", password: "", });
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const { link } = useTelegram();
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
@@ -14,8 +16,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "https://76cc-217-196-161-98.ngrok-free.app/auth/users";
-            const { data: res } = await axios.post(url, data);
+            const { data: res } = await axios.post(link, data);
             navigate("/auth/login");
             console.log(res.message);
         } catch (error) {
