@@ -47,7 +47,7 @@ body {
   padding-top: 15px;
 }
 
-.header-buttons{
+.header-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -183,18 +183,31 @@ body {
 
 /* Login & Register */
 
-.container{
+.container {
   width: 350px;
   margin: 10px 0px;
 }
 
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   row-gap: 10px;
+}
+
+.login-button {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  color: white;
+  background-color: #006aff;
+  border: none;
+}
+
+.login-input {
+  border: 1px solid gray;
 }
 
 /* Else */

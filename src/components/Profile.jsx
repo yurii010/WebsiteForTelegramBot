@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTelegram } from "../hooks/useTelegram";
 
 const Profile = () => {
+    const { userLang } = useTelegram();
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
 
@@ -22,7 +24,7 @@ const Profile = () => {
         <div className={''}>
             Profile<br />
             <button onClick={handleLogout} className={'login-button'}>
-                Sign out
+                {userLang == 'uk' ? 'Вийти' : 'Sing out'}
             </button>
         </div>
     );

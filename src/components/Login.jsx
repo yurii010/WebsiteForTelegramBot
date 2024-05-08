@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useTelegram } from "../hooks/useTelegram";
 
 const Login = () => {
-    const { link } = useTelegram();
-    const [data, setData] = useState({ username: "", password: "" });
+    const { link, userLang } = useTelegram();
+    const [data, setData] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
 
     const handleChange = ({ currentTarget: input }) => {
@@ -15,7 +15,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data: res } = await axios.post(link+'/auth/login', data);
+            const { data: res } = await axios.post(link + '/auth/login', data);
             localStorage.setItem("token", res.data);
             window.location = "/profile";
         } catch (error) {
@@ -32,35 +32,35 @@ const Login = () => {
     return (
         <div className={'container'}>
             <form className={'login-form'} onSubmit={handleSubmit}>
-                <h1>Login to Your Account</h1>
+                <p className="login-title">Login to Your Account</p>
                 <input
-                    type="username"
-                    placeholder="Your username"
-                    name="username"
+                    type="email"
+                    placeholder={userLang == 'uk' ? 'Ваш поштовий адрес' : 'Your email'}
+                    name="email"
                     onChange={handleChange}
-                    value={data.username}
+                    value={data.email}
                     required
-                    className={'login-input'}
+                    className={'input-form login-input'}
                 />
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder={userLang == 'uk' ? 'Пароль' : 'Password'}
                     name="password"
                     onChange={handleChange}
                     value={data.password}
                     required
-                    className={'login-input'}
+                    className={'input-form login-input'}
                 />
                 {error && <div className={'login-error-text'}>{error}</div>}
                 <button type="submit" className={'login-button'}>
-                    Sing In
+                    {userLang == 'uk' ? 'Авторизуватись' : 'Sing in'}
                 </button>
             </form>
             <div className={'login-form mt'}>
-                <h1>New Here ?</h1>
+                <p className="login-title">{userLang == 'uk' ? 'Вперше тут?' : 'New here?'}</p>
                 <Link to="/auth/register">
-                    <button type="button" className={''}>
-                        Sing Up
+                    <button type="button" className={'login-button'}>
+                        {userLang == 'uk' ? 'Зареєструватись' : 'Sing up'}
                     </button>
                 </Link>
             </div>
