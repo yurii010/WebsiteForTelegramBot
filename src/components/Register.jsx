@@ -16,7 +16,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data: res } = await axios.post(link, data);
+            const { data: res } = await axios.post(link+'/auth/register', data);
             navigate("/auth/login");
             console.log(res.message);
         } catch (error) {
