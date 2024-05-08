@@ -15,7 +15,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data: res } = await axios.post(link + '/auth/login', data);
+            const { data: res } = await axios.post(link + '/auth/login', data, { headers: { 'Accept-Language': userLang } });
             localStorage.setItem("token", res.data);
             window.location = "/profile";
         } catch (error) {
@@ -32,7 +32,7 @@ const Login = () => {
     return (
         <div className={'container'}>
             <form className={'login-form'} onSubmit={handleSubmit}>
-                <p className="login-title">Login to Your Account</p>
+                <p className="login-title">{userLang == 'uk' ? 'Авторизація' : 'Login to your account'}</p>
                 <input
                     type="email"
                     placeholder={userLang == 'uk' ? 'Ваш поштовий адрес' : 'Your email'}
