@@ -17,16 +17,16 @@ const Profile = () => {
         }
     }, [token])
 
-    // const onSendUsername = async () => {
-    //     const email = localStorage.getItem('email');
-    //     try {
-    //         const response = await axios.get(`${link}/users`, email);
-    //         const { name } = response.data;
-    //         setUsername(name);
-    //     } catch (error) {
-    //         console.error("Error fetching username", error);
-    //     }
-    // };
+    const onSendUsername = async () => {
+        const email = localStorage.getItem('email');
+        try {
+            const response = await axios.get(`${link}/users`, email);
+            const { name } = response.data;
+            setUsername(name);
+        } catch (error) {
+            console.error("Error fetching username", error);
+        }
+    };
 
     // useEffect(() => {
     //     onSendUsername()
