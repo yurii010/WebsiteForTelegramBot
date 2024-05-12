@@ -28,9 +28,9 @@ const Profile = () => {
         }
     };
 
-    // useEffect(() => {
-    //     onSendUsername()
-    // }, [onSendUsername])
+    useEffect(() => {
+        onSendUsername()
+    }, [onSendUsername])
 
     const handleLogout = () => {
         localStorage.removeItem('token');
