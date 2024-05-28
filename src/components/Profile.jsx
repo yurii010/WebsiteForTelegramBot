@@ -37,7 +37,6 @@ const Profile = () => {
     return (
         <div className={''}>
             <p>Your account username: {username}</p>
-            <p>{email}</p>
             <button onClick={handleLogout} className={'login-button'}>
                 {userLang == 'uk' ? 'Вийти' : 'Sing out'}
             </button>
