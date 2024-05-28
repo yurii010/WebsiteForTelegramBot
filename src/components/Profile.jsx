@@ -7,6 +7,7 @@ const Profile = () => {
     const { userLang, link } = useTelegram();
     const [username, setUsername] = useState('');
     const token = localStorage.getItem('token');
+    const email = localStorage.getItem('email');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,10 +19,10 @@ const Profile = () => {
     }, [token])
 
     const onSendUsername = async () => {
-        const email = localStorage.getItem('email');
         try {
-            const response = await axios.post(`${link}/users`, email);
-            const { name } = response.data;
+            const response = await axios.post(`${link}/auth/users`, email);
+            const name = response.data;
+            console.log(name);
             setUsername(name);
         } catch (error) {
             console.error("Error fetching username", error);
@@ -40,7 +41,7 @@ const Profile = () => {
     return (
         <div className={''}>
             <p>Your account username: {username}</p>
-            {email}
+            <p>{email}</p>
             <button onClick={handleLogout} className={'login-button'}>
                 {userLang == 'uk' ? 'Вийти' : 'Sing out'}
             </button>
