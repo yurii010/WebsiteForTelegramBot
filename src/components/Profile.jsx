@@ -10,19 +10,10 @@ const Profile = () => {
     const email = localStorage.getItem('email');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (token) {
-            return
-        } else {
-            navigate("/auth/login");
-        }
-    }, [token])
-
     const onSendUsername = async () => {
         try {
-            const response = await axios.post(`${link}/auth/users`, email);
+            const response = await axios.post(`${link}/auth/users`, { email });
             const name = response.data.name;
-            console.log(name);
             setUsername(name);
         } catch (error) {
             console.error("Error fetching username", error);
@@ -30,8 +21,13 @@ const Profile = () => {
     };
 
     useEffect(() => {
-        onSendUsername()
-    }, [onSendUsername])
+        if (token) {
+            onSendUsername();
+            return
+        } else {
+            navigate("/auth/login");
+        }
+    }, [token])
 
     const handleLogout = () => {
         localStorage.removeItem('token');
