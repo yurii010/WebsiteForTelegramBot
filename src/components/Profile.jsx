@@ -21,7 +21,7 @@ const Profile = () => {
     const onSendUsername = async () => {
         try {
             const response = await axios.post(`${link}/auth/users`, email);
-            const name = response.data;
+            const name = response.data.name;
             console.log(name);
             setUsername(name);
         } catch (error) {
