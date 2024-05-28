@@ -20,7 +20,7 @@ const Profile = () => {
     const onSendUsername = async () => {
         const email = localStorage.getItem('email');
         try {
-            const response = await axios.get(`${link}/users`, email);
+            const response = await axios.post(`${link}/users`, email);
             const { name } = response.data;
             setUsername(name);
         } catch (error) {
@@ -40,6 +40,7 @@ const Profile = () => {
     return (
         <div className={''}>
             <p>Your account username: {username}</p>
+            {email}
             <button onClick={handleLogout} className={'login-button'}>
                 {userLang == 'uk' ? 'Вийти' : 'Sing out'}
             </button>
