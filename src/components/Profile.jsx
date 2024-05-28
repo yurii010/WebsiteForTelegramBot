@@ -36,7 +36,7 @@ const Profile = () => {
     }
     return (
         <div className={''}>
-            <p>Your account username: {username}</p>
+            <p>{userLang == 'uk' ? `Ваш нікнейм: ${username}` : `Your account username: ${username}`}</p>
             <button onClick={handleLogout} className={'login-button'}>
                 {userLang == 'uk' ? 'Вийти' : 'Sing out'}
             </button>
