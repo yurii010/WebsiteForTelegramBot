@@ -1,6 +1,5 @@
 import '../App.css';
-
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useTelegram } from '../hooks/useTelegram';
 import ProductItem from './ProductItem';
 
@@ -17,11 +16,7 @@ const ProductList = () => {
     return (
         <div className='list'>
             {products.map(product => (
-                <ProductItem
-                    key={product.id}
-                    product={product}
-                    onAdd={onAdd}
-                />
+                <ProductItem key={product.id} product={product} onAdd={onAdd} />
             ))}
         </div>
     );

@@ -6,7 +6,6 @@ import { useTelegram } from '../hooks/useTelegram';
 
 const AboutProduct = () => {
     const { tg, products, onSendData, onAdd, userLang } = useTelegram();
-
     const params = useParams();
 
     useEffect(() => {
@@ -19,7 +18,6 @@ const AboutProduct = () => {
     const onAddHandler = () => {
         onAdd(products[params.id - 1]);
     }
-
     const product = products[params.id - 1];
 
     return (

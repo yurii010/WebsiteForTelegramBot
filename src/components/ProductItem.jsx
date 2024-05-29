@@ -1,15 +1,14 @@
 import '../App.css';
-
 import Button from './Button';
 import { Link } from 'react-router-dom';
 import { useTelegram } from '../hooks/useTelegram';
 
 const ProductItem = ({ product, onAdd }) => {
     const { userLang } = useTelegram();
-
     const onAddHandler = () => {
         onAdd(product);
     }
+    
     return (
         <div className='product'>
             <div className='product-image-div'>
