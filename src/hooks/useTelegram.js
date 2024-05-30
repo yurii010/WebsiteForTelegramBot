@@ -12,7 +12,7 @@ export const TelegramProvider = ({ children }) => {
 
     /* Properties */
 
-    const link = "https://3968-217-196-161-98.ngrok-free.app";
+    const link = "https://aeb5-5-58-19-60.ngrok-free.app";
 
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
